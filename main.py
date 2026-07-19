@@ -20,9 +20,8 @@ app.add_middleware(
 DB_URL = "DATABASE_URL"
 
 # TODO: PASTE YOUR GOOGLE API KEY HERE
-genai.configure(api_key="GEMINI_API_KEY") 
+genai.configure(api_key=os.getenv("GEMINI_API_KEY")) 
 model = genai.GenerativeModel('gemini-1.5-flash')
-
 # --- THE PERFECTLY SYNCED DATA MODEL ---
 class NewIncident(BaseModel):
     crime_type: str
