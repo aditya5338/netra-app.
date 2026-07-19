@@ -46,18 +46,18 @@ export default function App() {
     setTimeout(() => setIsCopied(false), 3000);
   };
 
-  useEffect(() => {
-    fetch("https://netra-app.onrender.com/stats")
+ useEffect(() => {
+    fetch("https://netra-app.onrender.com/api/stats")
       .then(res => res.json())
       .then(data => setStats(data))
       .catch(err => console.error(err));
 
-    fetch("https://netra-app.onrender.com/network")
+    fetch("https://netra-app.onrender.com/api/network")
       .then(res => res.json())
       .then(data => setNetworkData(data))
       .catch(err => console.error(err));
 
-    fetch("https://netra-app.onrender.com/incidents")
+    fetch("https://netra-app.onrender.com/api/incidents")
       .then(res => res.json())
       .then(data => setIncidentsList(data))
       .catch(err => console.error(err));
@@ -102,7 +102,8 @@ export default function App() {
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      const response = await fetch("https://netra-app.onrender.com/incidents", {
+      // Add /api/ here as well!
+      const response = await fetch("https://netra-app.onrender.com/api/incidents", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData)
